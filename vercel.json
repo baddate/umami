@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/stats/:match*",
-      "destination": "/:match*"
+      "destination": "https://umami-git-test-baddates-projects.vercel.app/:match*"
     }
   ]
 }
