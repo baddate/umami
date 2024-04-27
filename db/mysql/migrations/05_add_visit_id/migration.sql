@@ -5,7 +5,13 @@ UPDATE `website_event` we
 JOIN (SELECT DISTINCT
         s.session_id,
         s.visit_time,
-        BIN_TO_UUID(RANDOM_BYTES(16) & 0xffffffffffff0fff3fffffffffffffff | 0x00000000000040008000000000000000) uuid
+        SELECT LOWER(CONCAT(
+    HEX(RANDOM_BYTES(4)), '-',
+    HEX(RANDOM_BYTES(2)), '-4',
+    SUBSTR(HEX(RANDOM_BYTES(2)), 2, 3), '-',
+    CONCAT(HEX(FLOOR(ASCII(RANDOM_BYTES(1)) / 64)+8),SUBSTR(HEX(RANDOM_BYTES(2)), 2, 3)), '-',
+    HEX(RANDOM_BYTES(6))
+))
     FROM (SELECT DISTINCT session_id,
             DATE_FORMAT(created_at, '%Y-%m-%d %H:00:00') visit_time
         FROM `website_event`) s) a
