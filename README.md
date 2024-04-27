@@ -16,7 +16,7 @@ A detailed getting started guide can be found at [https://umami.is/docs/](https:
 ### Install Yarn
 
 ```
-npm install -g yarn
+npm install -g yarn 
 ```
 
 ### Get the source code and install packages
